@@ -20,6 +20,7 @@ provider "github" {
 
 resource "github_repository" "remote" {
   name = "2026-01-iac-hetzner"
+  visibility = "private"
 }
 
 output "remote_repo" {
