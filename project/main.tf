@@ -26,46 +26,28 @@ output "remote_repo" {
   value = github_repository.remote.http_clone_url
 }
 
-resource "github_repository_collaborators" "students" {
+# Locals are a way to define terraform variables
+locals {
+  students = [
+    "AndreasGio092025",
+    "desiree25sfj",
+    "brage092025",
+    "dainius092025",
+    "Andreas092025",
+    "Daniel092025",
+    "wolfgang25sfj",
+    "sindre092025-eng",
+    "wc082025-cyber",
+    "jarand220925",
+    "IvanKalyta2025",
+  ]
+}
+
+resource "github_repository_collaborator" "admins" {
+  # for_each is HashiCorp Configuration Language's (HCL) "hacky" variation of a loop
+  for_each = toset(local.students)
+
   repository = github_repository.remote.name
-
-  user {
-    username = "AndreasGio092025"
-  }
-
-  user {
-    username = "desiree25sfj"
-  }
-
-  user {
-    username = "brage092025"
-  }
-
-  user {
-    username = "dainius092025"
-  }
-
-  user {
-    username = "Andreas092025"
-  }
-
-  user {
-    username = "Daniel092025"
-  }
-
-  user {
-    username = "wolfgang25sfj"
-  }
-
-  user {
-    username = "sindre092025"
-  }
-
-  user {
-    username = "wc082025-cyber "
-  }
-
-  user {
-    username = "jarand220925"
-  }
+  username   = each.value
+  permission = "admin"
 }
