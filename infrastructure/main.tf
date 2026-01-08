@@ -18,7 +18,8 @@ provider "hcloud" {
 module "compose_app" {
   source = "./hetzner-compose-app"
 
-  ssh_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5CCPkPieku3gNLy/a91f0CB0saFxzJd3C+0+GRUjq0 admin"
+  ssh_key        = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5CCPkPieku3gNLy/a91f0CB0saFxzJd3C+0+GRUjq0 admin"
+  git_repository = "https://github.com/LarsG/dotnet"
 }
 
 output "ip_address" {
