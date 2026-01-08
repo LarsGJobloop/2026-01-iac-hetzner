@@ -30,6 +30,8 @@ resource "hcloud_server" "example_server" {
   ssh_keys = [
     hcloud_ssh_key.example_ssh_key.id
   ]
+
+  user_data = file("cloud-init.yaml")
 }
 
 output "server_ipv4" {
