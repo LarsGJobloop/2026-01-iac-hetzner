@@ -24,3 +24,10 @@ runcmd:
   # Install Docker Engine
   - apt-get update
   - apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+  # Clone down git repo
+  - git clone https://github.com/LarsGJobloop/2026-01-iac-hetzner.git /app
+
+  # Start compose application
+  - cd /app # Change to the application folder
+  - docker compose up # Start compose applicatino
