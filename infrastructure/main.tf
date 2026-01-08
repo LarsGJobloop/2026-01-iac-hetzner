@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     hcloud = {
-      source = "hetznercloud/hcloud"
+      source  = "hetznercloud/hcloud"
       version = "1.58.0"
     }
   }
@@ -16,16 +16,16 @@ provider "hcloud" {
 }
 
 resource "hcloud_ssh_key" "example_ssh_key" {
-  name = "example-key"
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEhEZoldAWf6T60aSvmlTFLWmQbMmTrWD6s5t55ezur3 "
+  name       = "example-key"
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5CCPkPieku3gNLy/a91f0CB0saFxzJd3C+0+GRUjq0 admin"
 }
 
 resource "hcloud_server" "example_server" {
   name = "example-server"
 
   server_type = "cax41"
-  image = "debian-13"
-  location = "hel1" # Helsinki
+  image       = "debian-13"
+  location    = "hel1" # Helsinki
 
   ssh_keys = [
     hcloud_ssh_key.example_ssh_key.id
