@@ -4,7 +4,7 @@
 terraform {
   required_providers {
     github = {
-      source = "integrations/github"
+      source  = "integrations/github"
       version = "6.9.0"
     }
   }
@@ -19,8 +19,8 @@ provider "github" {
 }
 
 resource "github_repository" "remote" {
-  name = "2026-01-iac-hetzner"
-  visibility = "private"
+  name       = "2026-01-iac-hetzner"
+  visibility = "public"
 }
 
 output "remote_repo" {
